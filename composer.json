@@ -1,0 +1,13 @@
+{
+    "require": {
+        "smalot/pdfparser": "^0.14.0",
+        "ext-json": "*",
+        "ext-curl": "*"
+    },
+    "repositories": {
+        "packagist": {
+            "type": "composer",
+            "url": "https://packagist.phpcomposer.com"
+        }
+    }
+}
