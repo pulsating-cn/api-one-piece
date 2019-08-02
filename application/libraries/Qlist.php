@@ -1,6 +1,10 @@
 <?php
 use QL\QueryList;
 
+/**
+ * 采集wiki百科中海贼王人物资料
+ * QueryList 4
+ */
 class Qlist
 {
 
@@ -9,13 +13,10 @@ class Qlist
 
     }
 
-    public function test()
+    public function crawler()
     {
-        $html = $this->_get('https://zh.wikipedia.org/wiki/%E8%92%99%E5%85%B6%C2%B7D%C2%B7%E9%AD%AF%E5%A4%AB');
+        $html = $this->_get('https://zh.wikipedia.org/wiki/%E5%B7%B4%E5%85%B6_(ONE_PIECE)');
         return $this->analysis($html);
-        // return urlencode($this->_get('https://www.baidu.com'));
-
-        // return $this->analysis();
     }
 
     private function _get($url)
@@ -46,11 +47,15 @@ class Qlist
 
     private function analysis($html)
     {
-        $data = QueryList::Query($html, array(
-            // 'test' => array('.infobox', 'html'),
-            'test' => array('.infobox', 'html'),
-        ))->data;
-        return $data;
+
+        $table     = QueryList::html($html)->find('.infobox');
+        $tableRows = $table->find('tr')->map(function ($row) {
+            $result = array();
+            $result['left'] = $row->find('th')->texts()->all();
+            $result['right'] = $row->find('td')->texts()->all();
+            return $result;
+        });
+        return $tableRows->all();
     }
 
 }

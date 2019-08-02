@@ -22,7 +22,7 @@ class Index extends REST_Controller
     }
     public function test_query_list_get()
     {
-        $res = $this->qlist->test();
+        $res = $this->qlist->crawler();
         // $res = json_decode($res)
         print_r($res);
     }

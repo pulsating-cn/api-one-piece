@@ -3,7 +3,7 @@
         "smalot/pdfparser": "^0.14.0",
         "ext-json": "*",
         "ext-curl": "*",
-        "jaeger/querylist": "V3.2.1"
+        "jaeger/querylist": "^4.1"
     },
     "repositories": {
         "packagist": {
